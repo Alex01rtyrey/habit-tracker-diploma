@@ -1,6 +1,6 @@
-function Button () {
+function Button (props) {
     return(
-        <button>Кнопка</button>
+        <button onClick={props.onClick}>{props.text}</button>
     )
 }
 
