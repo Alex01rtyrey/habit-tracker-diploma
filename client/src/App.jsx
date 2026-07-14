@@ -1,7 +1,11 @@
+
+import HomePage from "./pages/HomePage"
+
+
 function App() {
   return (
     <div>
-      <h1>Habit Tracker</h1>
+      <HomePage />
     </div>
   )
 }
