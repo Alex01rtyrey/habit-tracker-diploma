@@ -1,12 +1,23 @@
 import { useState } from "react";
+import Input from "../components/Input";
+import Button from "../components/Button";
 
 
 function LoginPage () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     function handleSubmit(event) {
         event.preventDefault();
+
+        if(!email || !password) {
+            setError("Заполните все поля!");
+            return;
+        }
+
+        setError("");
+
         console.log(email);
         console.log(password);
     }
@@ -15,23 +26,28 @@ function LoginPage () {
         <form onSubmit={handleSubmit}>
             <h1>Страница входа</h1>
             
-            <label>Email:</label>
-            <input
+            <Input
+                label="Email"
                 type="email"
                 value={email}
+                placeholder="Введите email"
                 onChange={(event) => setEmail(event.target.value)}
             />
 
-            <label>Пароль:</label>
-            <input
+            <Input
+                label="Пароль"
                 type="password"
                 value={password}
+                placeholder="Введите пароль"
                 onChange={(event) => setPassword(event.target.value)}
             />
 
-            <button type="submit">
-                Войти
-            </button>
+            {error && <p>{error}</p>}
+
+            <Button
+                text="Войти"
+                type="submit"
+            />
         </form>
     )
 }
