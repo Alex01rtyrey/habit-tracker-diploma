@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HabitForm from "../components/HabitForm";
+import HabitList from "../components/HabitList";
 
 function DashboardPage() {
 
@@ -22,14 +23,7 @@ function DashboardPage() {
       <h1>Dashboard</h1>
 
       <HabitForm addHabit={addHabit} />
-
-      <ul>
-        {habits.map((habit) => (
-          <li key={habit.id}>
-            {habit.name}
-          </li>
-        ))}
-      </ul>
+      <HabitList habits={habits} />
     </div>
   );
 }
