@@ -18,12 +18,31 @@ function DashboardPage() {
 
   }
 
+
+    function toggleHabit(id) {
+      setHabits((prevHabits) => 
+        prevHabits.map((habit) => {
+          if(habit.id === id) {
+            return {
+              ...habit,
+              completed: !habit.completed
+            };
+          } else {
+            return habit;
+          }
+        })
+      );
+    }
+
   return (
     <div>
       <h1>Dashboard</h1>
 
       <HabitForm addHabit={addHabit} />
-      <HabitList habits={habits} />
+      <HabitList 
+        habits={habits}
+        toggleHabit={toggleHabit}  
+      />
     </div>
   );
 }

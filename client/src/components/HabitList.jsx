@@ -3,7 +3,11 @@ function HabitList(props) {
         <ul>
         {props.habits.map((habit) => (
             <li key={habit.id}>
-                {habit.name}
+                {habit.completed ? "✅" : "❌"} {habit.name}
+
+                <button onClick={() => props.toggleHabit(habit.id)}>
+                    Выполнить
+                </button>
             </li>
         ))}
         </ul>
