@@ -7,6 +7,7 @@ function Header() {
             <Link to="/">Главная</Link>
             <Link to="/login">Войти</Link>
             <Link to="/register">Регистрация</Link>
+            <Link to="/dashboard">Список привычек</Link>
         </div>
     )
 }

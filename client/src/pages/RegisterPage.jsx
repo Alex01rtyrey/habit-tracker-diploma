@@ -29,7 +29,7 @@ function RegisterPage () {
                 label="email"
                 type="email"
                 value={email}
-                placeholder="Введите логин"
+                placeholder="Введите email"
                 onChange={(event) => setEmail(event.target.value)}
             />
 
