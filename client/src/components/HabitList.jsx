@@ -1,14 +1,14 @@
-function HabitList(props) {
+import HabitItem from "./HabitItem";
+
+function HabitList({ habits, toggleHabit }) {
     return (
         <ul>
-        {props.habits.map((habit) => (
-            <li key={habit.id}>
-                {habit.completed ? "✅" : "❌"} {habit.name}
-
-                <button onClick={() => props.toggleHabit(habit.id)}>
-                    Выполнить
-                </button>
-            </li>
+        {habits.map((habit) => (
+            <HabitItem 
+                key={habit.id}
+                habit={habit}
+                toggleHabit={toggleHabit}
+            />
         ))}
         </ul>
     )
