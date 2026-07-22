@@ -34,6 +34,13 @@ function DashboardPage() {
       );
     }
 
+
+    function deleteHabit(id) {
+      setHabits((prevHabits) => 
+        prevHabits.filter((habit) => habit.id !== id)
+      )
+    }
+
   return (
     <div>
       <h1>Dashboard</h1>
@@ -41,7 +48,8 @@ function DashboardPage() {
       <HabitForm addHabit={addHabit} />
       <HabitList 
         habits={habits}
-        toggleHabit={toggleHabit}  
+        toggleHabit={toggleHabit}
+        deleteHabit={deleteHabit}  
       />
     </div>
   );

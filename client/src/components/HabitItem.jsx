@@ -1,12 +1,22 @@
+import Button from "./Button";
 
-function HabitItem ({ habit, toggleHabit }) {
+function HabitItem ({ habit, toggleHabit, deleteHabit }) {
     return(
         
         <li>
             {habit.completed ? "✅" : "❌"} {habit.name}
-             <button onClick={() => toggleHabit(habit.id)}>
-                    Выполнить
-                </button>
+                
+                <Button 
+                onClick={() => toggleHabit(habit.id)} 
+                text="Выполнить"
+                />
+                <Button 
+                onClick={() => deleteHabit(habit.id)} 
+                text="Удалить"
+                />
+                
+
+
         </li>
         
     )
