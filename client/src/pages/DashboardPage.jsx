@@ -7,9 +7,15 @@ function DashboardPage() {
   const[habits, setHabits] = useState([]);
 
   function addHabit(name) {
+
+    let checkName =  name.trim();
+    if(checkName.length === 0) {
+      return;
+    }
+    
     let newHabit =  {
       id: Date.now(),
-      name: name,
+      name: checkName,
       completed: false
     }
     
@@ -41,6 +47,23 @@ function DashboardPage() {
       )
     }
 
+
+    function editHabit(id, newName) {
+      setHabits((prevHabits) => 
+        prevHabits.map((habit) => {
+          if(habit.id === id) {
+           
+            return {
+              ...habit,
+              name: newName 
+            }
+          } else {
+            return habit;
+          }
+        })
+      )
+    }
+
   return (
     <div>
       <h1>Dashboard</h1>
@@ -49,7 +72,9 @@ function DashboardPage() {
       <HabitList 
         habits={habits}
         toggleHabit={toggleHabit}
-        deleteHabit={deleteHabit}  
+        deleteHabit={deleteHabit}
+        editHabit={editHabit}
+        
       />
     </div>
   );
