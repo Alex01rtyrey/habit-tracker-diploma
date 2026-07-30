@@ -1,23 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HabitForm from "../components/HabitForm";
 import HabitList from "../components/HabitList";
+import { getHabits } from "../api/habitApi";
 
 function DashboardPage() {
 
-  const[habits, setHabits] = useState([]);
-
-  function addHabit(name) {
-
-    let checkName =  name.trim();
-    if(checkName.length === 0) {
-      return;
-    }
+  const [ habits, setHabits] = useState([]);
+  const [ isLoading, setIsLoading ] = useState(true);
+  const [ error, setError ] = useState(null);
     
-    let newHabit =  {
-      id: Date.now(),
-      name: checkName,
-      completed: false
-    }
+   useEffect(() => {
+      getHabits()
+        .then((response) => {
+          setHabits(response);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setError(error);
+          setIsLoading(false);
+        })
+    }, [])
+  
+    function addHabit(name) { 
+        let checkName =  name.trim();
+        if(checkName.length === 0) {
+          return;
+        }
+        
+        let newHabit =  {
+          id: Date.now(),
+          name: checkName,
+          completed: false
+        }
     
     setHabits((prevHabits) => [...prevHabits, newHabit]);
 
