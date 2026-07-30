@@ -77,12 +77,26 @@ function DashboardPage() {
         })
       )
     }
+  
+  if(isLoading) {    
+      return <div>Загрузка данных...</div>
+  }  
+  
+  if(error) {
+      return <div>Ошибка: {error.message}</div>
+  }
+  
+  if(habits.length === 0) {
+      return <div>У вас пока нет привычек!</div>
+  }
 
   return (
     <div>
       <h1>Dashboard</h1>
 
       <HabitForm addHabit={addHabit} />
+
+
       <HabitList 
         habits={habits}
         toggleHabit={toggleHabit}
